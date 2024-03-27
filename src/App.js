@@ -7,7 +7,7 @@ import './App.scss'
 
 import { useDispatch , useSelector} from 'react-redux'
 import { useEffect } from 'react'
-import { fetchFoodsList } from './store/modules/takeaway'
+import { fetchFoodsList} from './store/modules/takeaway'
 
 // const foodsList = [
 //   {
@@ -68,10 +68,10 @@ import { fetchFoodsList } from './store/modules/takeaway'
 
 const App = () => {
   const dispatch = useDispatch()
+  const {foodsList, activeTag} = useSelector(state => state.foods)
   useEffect(()=> {
     dispatch(fetchFoodsList())
   },[dispatch])
-  const {foodsList, activeTag} = useSelector(state => state.foods)
   console.log('foods', foodsList)
   return (
     <div className="home">
