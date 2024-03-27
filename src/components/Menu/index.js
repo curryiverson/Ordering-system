@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import './index.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeIndex } from '../../store/modules/takeaway'
+import { changeIndex, changeTag } from '../../store/modules/takeaway'
 const Menu = () => {
   // const foodsList = [
   //   {
@@ -59,7 +59,7 @@ const Menu = () => {
   //     ]
   //   }
   // ]
-  const {foodsList, activeIndex} = useSelector(state => state.foods)
+  const {foodsList, activeIndex, activeTag} = useSelector(state => state.foods)
   const dispatch = useDispatch()
   const menus = foodsList.map(item => ({ tag: item.tag, name: item.name }))
   return (
@@ -69,10 +69,11 @@ const Menu = () => {
         return (
           <div
             key={item.tag}
-            onClick={() => dispatch(changeIndex(index))}
+            // onClick={() => dispatch(changeIndex(index))}
+            onClick={()=> dispatch(changeTag(item.tag))}
             className={classNames(
               'list-menu-item',
-              index === activeIndex ? 'active' : ''
+              item.tag === activeTag ? 'active' : ''
             )}
           >
             {item.name}

@@ -6,6 +6,7 @@ const foodSlice = createSlice({
   initialState: {
     foodsList: [],
     activeIndex: 0,
+    activeTag: '',
   },
   reducers: {
     getFoodsList(state, action) {
@@ -13,11 +14,14 @@ const foodSlice = createSlice({
     },
     changeIndex(state, action){
       state.activeIndex = action.payload
+    },
+    changeTag(state, action){
+      state.activeTag = action.payload
     }
   },
 })
 
-const {getFoodsList, changeIndex} = foodSlice.actions
+const {getFoodsList, changeIndex, changeTag} = foodSlice.actions
 //异步获取foodlist
 const fetchFoodsList = () => {
   return async (dispatch)=> {
@@ -25,6 +29,6 @@ const fetchFoodsList = () => {
     dispatch(getFoodsList(res.data))
   }
 }
-export {fetchFoodsList, changeIndex}
+export {fetchFoodsList, changeIndex, changeTag}
 
 export default foodSlice.reducer

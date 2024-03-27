@@ -71,7 +71,7 @@ const App = () => {
   useEffect(()=> {
     dispatch(fetchFoodsList())
   },[dispatch])
-  const {foodsList} = useSelector(state => state.foods)
+  const {foodsList, activeTag} = useSelector(state => state.foods)
   console.log('foods', foodsList)
   return (
     <div className="home">
@@ -88,7 +88,7 @@ const App = () => {
               {/* 外卖商品列表 */}
               {foodsList.map(item => {
                 return (
-                  <FoodsCategory
+                  item.tag === activeTag && <FoodsCategory
                     key={item.tag}
                     // 列表标题
                     name={item.name}
