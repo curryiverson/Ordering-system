@@ -16,3 +16,4 @@ npm run serve
 npm run start
 
 ```
+![image](https://github.com/curryiverson/Ordering-system/blob/main/public/%E7%A4%BA%E4%BE%8B%E5%9B%BE.png)
